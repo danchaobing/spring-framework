@@ -38,6 +38,8 @@ import org.springframework.core.type.AnnotationMetadata;
  * {@code @Configuration} classes have been processed (see {@link DeferredImportSelector}
  * for details).
  *
+ * 通过@Import 注解将该接口中selectImports方法返回的class注册到容器中
+ *
  * @author Chris Beams
  * @since 3.1
  * @see DeferredImportSelector
@@ -50,6 +52,8 @@ public interface ImportSelector {
 	/**
 	 * Select and return the names of which class(es) should be imported based on
 	 * the {@link AnnotationMetadata} of the importing @{@link Configuration} class.
+	 *
+	 *  返回需要注册到容器的全限定名数组
 	 */
 	String[] selectImports(AnnotationMetadata importingClassMetadata);
 

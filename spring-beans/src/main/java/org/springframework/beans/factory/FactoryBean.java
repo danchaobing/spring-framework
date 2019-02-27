@@ -48,6 +48,10 @@ import org.springframework.lang.Nullable;
  * synchronization other than for purposes of lazy initialization within the
  * FactoryBean itself (or the like).
  *
+ * FactoryBean与BeanFactory的不同在于:
+ * 		FactoryBean返回bean类型是固定的指定的泛型T
+ * 		BeanFactory是所有注册到容器的bean的集合
+ *
  * @author Rod Johnson
  * @author Juergen Hoeller
  * @since 08.03.2003
@@ -74,6 +78,10 @@ public interface FactoryBean<T> {
 	 * @return an instance of the bean (can be {@code null})
 	 * @throws Exception in case of creation errors
 	 * @see FactoryBeanNotInitializedException
+	 *
+	 * 该方法是创建一个<T>类型的bean注册到容器
+	 * 不同于BeanFactory的是，BeanFactory是所有类型bean的集合
+	 * 如果要返回FactoryBean本自身实例, 根据id获取时，在id前加&符号;	 无法通过类型获取到自身实例
 	 */
 	@Nullable
 	T getObject() throws Exception;
@@ -96,6 +104,8 @@ public interface FactoryBean<T> {
 	 * @return the type of object that this FactoryBean creates,
 	 * or {@code null} if not known at the time of the call
 	 * @see ListableBeanFactory#getBeansOfType
+	 *
+	 * 该方法返回的是<T>
 	 */
 	@Nullable
 	Class<?> getObjectType();
@@ -124,6 +134,9 @@ public interface FactoryBean<T> {
 	 * @return whether the exposed object is a singleton
 	 * @see #getObject()
 	 * @see SmartFactoryBean#isPrototype()
+	 *
+	 * 返回true则每次都是从容器中取，即单例
+	 * 返回false则每次都是创建，即多例
 	 */
 	default boolean isSingleton() {
 		return true;

@@ -25,6 +25,8 @@ import org.springframework.core.type.classreading.MetadataReaderFactory;
  * Base interface for type filters using a
  * {@link org.springframework.core.type.classreading.MetadataReader}.
  *
+ *	通过实现该类可以自定义包扫描的过滤规则
+ *
  * @author Costin Leau
  * @author Juergen Hoeller
  * @author Mark Fisher

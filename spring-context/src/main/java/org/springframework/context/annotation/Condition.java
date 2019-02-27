@@ -32,6 +32,8 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  * of conditions that interact with {@code @Configuration} beans consider the
  * {@link ConfigurationCondition} interface.
  *
+ * 实现该接口，可以根据自定义的条件来判断是否要加载组件
+ *
  * @author Phillip Webb
  * @since 4.0
  * @see ConfigurationCondition
