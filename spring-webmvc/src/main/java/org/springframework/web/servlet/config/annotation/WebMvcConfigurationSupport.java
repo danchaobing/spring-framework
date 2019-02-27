@@ -269,6 +269,10 @@ public class WebMvcConfigurationSupport implements ApplicationContextAware, Serv
 	/**
 	 * Return a {@link RequestMappingHandlerMapping} ordered at 0 for mapping
 	 * requests to annotated controllers.
+	 *
+	 * 这里是注入 RequestMappingHandlerMapping, @Configuration在子类DelegatingWebMvcConfiguration类中
+	 * RequestMappingHandlerMapping实现了InitializingBean接口
+	 * RequestMappingHandlerMapping的初始化方法afterPropertiesSet中做了接口和方法的映射
 	 */
 	@Bean
 	public RequestMappingHandlerMapping requestMappingHandlerMapping() {

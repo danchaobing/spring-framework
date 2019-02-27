@@ -193,6 +193,8 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 	/**
 	 * Detects handler methods at initialization.
 	 * @see #initHandlerMethods
+	 *
+	 * 类加载的初始化方法， 初始化带@Controller的类，建立接口和方法的映射
 	 */
 	@Override
 	public void afterPropertiesSet() {
@@ -204,6 +206,8 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 	 * @see #getCandidateBeanNames()
 	 * @see #processCandidateBean
 	 * @see #handlerMethodsInitialized
+	 *
+	 * 初始化带@Controller的类，注册api和方法的映射关系
 	 */
 	protected void initHandlerMethods() {
 		for (String beanName : getCandidateBeanNames()) {
@@ -236,6 +240,8 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 	 * @since 5.1
 	 * @see #isHandler
 	 * @see #detectHandlerMethods
+	 *
+	 * 判断 bean 是否有@Controller注解， 有的话将其注册
 	 */
 	protected void processCandidateBean(String beanName) {
 		Class<?> beanType = null;
@@ -249,11 +255,15 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 			}
 		}
 		if (beanType != null && isHandler(beanType)) {
+			//如果有@Controller注解则建立其映射关系
 			detectHandlerMethods(beanName);
 		}
 	}
 
 	/**
+	 *
+	 * 在 @Controller 注解类里面找有 @RequestMapping 注解的的方法
+	 *
 	 * Look for handler methods in the specified handler bean.
 	 * @param handler either a bean name or an actual handler instance
 	 * @see #getMappingForMethod

@@ -199,6 +199,8 @@ public class RequestMappingHandlerMapping extends RequestMappingInfoHandlerMappi
 	 * {@inheritDoc}
 	 * <p>Expects a handler to have either a type-level @{@link Controller}
 	 * annotation or a type-level @{@link RequestMapping} annotation.
+	 *
+	 * @Controller 注解类的判断在此处
 	 */
 	@Override
 	protected boolean isHandler(Class<?> beanType) {
