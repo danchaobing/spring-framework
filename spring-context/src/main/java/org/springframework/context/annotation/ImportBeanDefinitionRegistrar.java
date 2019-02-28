@@ -41,6 +41,8 @@ import org.springframework.core.type.AnnotationMetadata;
  *
  * <p>See implementations and associated unit tests for usage examples.
  *
+ *	通过@Import(该接口的实现类)可以向容器中自定义注入bean
+ *
  * @author Chris Beams
  * @since 3.1
  * @see Import

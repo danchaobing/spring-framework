@@ -25,6 +25,8 @@ package org.springframework.beans.factory;
  * init method, for example in an XML bean definition. For a list of all bean
  * lifecycle methods, see the {@link BeanFactory BeanFactory javadocs}.
  *
+ *	通过让类实现该接口实现初始化bean
+ *
  * @author Rod Johnson
  * @author Juergen Hoeller
  * @see DisposableBean
@@ -40,6 +42,8 @@ public interface InitializingBean {
 	 * configuration and final initialization when all bean properties have been set.
 	 * @throws Exception in the event of misconfiguration (such as failure to set an
 	 * essential property) or if initialization fails for any other reason
+	 *
+	 * 执行时间: 对象创建完成，并且属性已经全部赋值
 	 */
 	void afterPropertiesSet() throws Exception;
 

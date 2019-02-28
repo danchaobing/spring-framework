@@ -48,6 +48,10 @@ import java.lang.annotation.Target;
  * lazy-resolution proxy for all affected dependencies, as an alternative to using
  * {@link org.springframework.beans.factory.ObjectFactory} or {@link javax.inject.Provider}.
  *
+ *
+ * 懒加载机制，在容器启动时不创建对象，在第一次获取bean时创建对象
+ *
+ *
  * @author Chris Beams
  * @author Juergen Hoeller
  * @since 3.0

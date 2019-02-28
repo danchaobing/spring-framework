@@ -27,6 +27,8 @@ package org.springframework.beans.factory;
  * custom destroy method, for example in an XML bean definition. For a list of all
  * bean lifecycle methods, see the {@link BeanFactory BeanFactory javadocs}.
  *
+ * 通过让类实现该接口实现销毁逻辑
+ *
  * @author Juergen Hoeller
  * @since 12.08.2003
  * @see InitializingBean
@@ -40,6 +42,8 @@ public interface DisposableBean {
 	 * Invoked by the containing {@code BeanFactory} on destruction of a bean.
 	 * @throws Exception in case of shutdown errors. Exceptions will get logged
 	 * but not rethrown to allow other beans to release their resources as well.
+	 *
+	 * 在类被容器移除的时候（移除之前）
 	 */
 	void destroy() throws Exception;
 
