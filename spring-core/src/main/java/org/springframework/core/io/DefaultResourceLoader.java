@@ -144,6 +144,7 @@ public class DefaultResourceLoader implements ResourceLoader {
 	public Resource getResource(String location) {
 		Assert.notNull(location, "Location must not be null");
 
+		//此处是留给使用者自己实现的,ProtocolResolver没有默认实现,需要使用者实现,并通过addProtocolResolver将实现加入到protocolResolvers集合
 		for (ProtocolResolver protocolResolver : this.protocolResolvers) {
 			Resource resource = protocolResolver.resolve(location, this);
 			if (resource != null) {
